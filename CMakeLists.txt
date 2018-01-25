@@ -11,6 +11,14 @@ find_package(catkin REQUIRED COMPONENTS
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
+find_package(cmake_modules)
+find_package(Eigen3 REQUIRED COMPONENTS system)
+include_directories(${Eigen3_INCLUDE_DIRS})
+
+find_package(PCL 1.8.0 REQUIRED)
+include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+add_definitions(${PCL_DEFINITIONS})
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -116,7 +124,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-include_directories(/usr/include/eigen3)
+# include_directories(/usr/include/eigen3)
 
 SET(CMAKE_CXX_FLAGS "-std=c++11 -O2 -g -Wall ${CMAKE_CXX_FLAGS}")
 
@@ -125,6 +133,9 @@ SET(CMAKE_CXX_FLAGS "-std=c++11 -O2 -g -Wall ${CMAKE_CXX_FLAGS}")
 #   src/${PROJECT_NAME}/mmath.cpp
 # )
 add_library(mmath src/mmath.cpp)
+add_library(binarion src/binarion.cpp)
+add_library(pca src/pca.cpp)
+add_library(differential src/differential.cpp src/binarion.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -133,6 +144,7 @@ add_library(mmath src/mmath.cpp)
 
 ## Declare a C++ executable
 # add_executable(mmath_node src/mmath_node.cpp)
+add_executable(test_binarion src/binarion.cpp src/test.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -142,6 +154,7 @@ add_library(mmath src/mmath.cpp)
 # target_link_libraries(mmath_node
 #   ${catkin_LIBRARIES}
 # )
+target_link_libraries(test_binarion ${catkin_LIBRARIES})
 
 #############
 ## Install ##
