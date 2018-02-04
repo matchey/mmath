@@ -16,6 +16,7 @@ class Differential
 	double length;
 	bool isAngle;
 	bool isBegin;
+	// int save;
 	ros::Time current_time, last_time;
 
 	void initialize();
@@ -37,6 +38,7 @@ class Differential
 	double norm() const;
 	void setFlagAngle();
 	void setFlagAngle(const bool);
+	// void filter(const int&);
 };
 
 #endif
