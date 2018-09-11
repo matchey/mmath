@@ -45,7 +45,7 @@ class Binarion
 	friend std::ostream& operator << (std::ostream&, const Binarion&);
 };
 
-#include "mmath/binarion/mean.h"
+#include "mmath/binarion/mean.h" // impl for using template args
 
 #endif
 

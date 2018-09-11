@@ -11,13 +11,13 @@ find_package(catkin REQUIRED COMPONENTS
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
-find_package(cmake_modules)
-find_package(Eigen3 REQUIRED COMPONENTS system)
-include_directories(${Eigen3_INCLUDE_DIRS})
+# find_package(cmake_modules)
+# find_package(Eigen3 REQUIRED COMPONENTS system)
+# include_directories(${Eigen3_INCLUDE_DIRS})
 
 find_package(PCL 1.8.0 REQUIRED)
 include_directories(${PCL_INCLUDE_DIRS})
-link_directories(${PCL_LIBRARY_DIRS})
+link_directories(${PCL_LIBRARY_DIRS}) # pclにeigenも入ってるのか
 add_definitions(${PCL_DEFINITIONS})
 
 ## Uncomment this if the package has a setup.py. This macro ensures
